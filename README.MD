@@ -86,7 +86,23 @@ networks:
 ```
 
 
-## Step 3: Start the Containers
+## Step 3: Set Up a `.env` File
+1. In the same project directory, create a `.env` file:
+```bash
+touch .env
+```
+2. Open the file in a text editor and add the following configuration:
+```bash
+MYSQL_DATABASE=wordpress
+MYSQL_USER=wp_user
+MYSQL_PASSWORD=wp_password
+MYSQL_ROOT_PASSWORD=wp_root_password
+```
+* this `.env` will be used as reference of the `docker-compose.yml` file configuration. It's a best practice to keep sensitive data out of reach by versioning system and the like.
+
+
+
+## Step 4: Start the Containers
 Run the following command in your project directory to start the services:
 ```bash
 docker-compose up -d
@@ -95,36 +111,34 @@ docker-compose up -d
 
 
 
-## Step 4: Verify the Setup
+## Step 5: Verify the Setup
 1. Open a web browser.
 2. Navigate to `http://localhost:8080`.
 3. Follow the WordPress setup wizard.
 
 
 
-## Step 5: (Optional) Manage Your Containers
+## Step 6: (Optional) Manage Your Containers
 * To view running containers:
 ```bash
 docker ps
 ```
-
 * To stop the containers:
 ```bash
 docker-compose down
 ```
-
 * To rebuild and apply changes:
 ```bash
 docker-compose up -d --build
 ```
 
 
-## Step 6: (Optional) Persist Data
+## Step 7: (Optional) Persist Data
 The `volumes` defined in `docker-compose.yml` ensure that WordPress and database data persist between container restarts. You can verify this by stopping and restarting the containers without losing data.
 
 
 
-## Step 7: Customize the Environment
+## Step 8: Customize the Environment
 You can customize:
 * **Ports:** Change `8080:80` if port `8080` is already in use.
 * **Database Credentials:** Update environment variables in `docker-compose.yml`.
